@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src='https://npmcdn.com/babel-core@5.8.34/browser.min.js'></script>
+
+
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+
+    <!-- Style -->
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <link href="style2.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="chartWrapper">
+        <div id="cont" class="container-fluid">
+
+            <!-- Introduction -->
+            <div class="row" style="padding: 5px 0px;">
+                    <div class="col-sm-1 column" style="padding: 70px 15px;>
+                    <a class="logo"><img src="china2.png" style="width: 90px; height: 60px"><br></a>
+                    <!-- <span class="subheader">We are all here supporting you!</span>-->
+                </div>
+
+                <div class="col-sm-9 column" style="padding: 30px 15px;">
+                    <div class="row">
+                        <div class="col-md-12 column" style="padding-top: 10px;">
+                            <p><span style="font-size: 28px;" class="title">
+                                    <h1>Canovavirus Outbreak in China: 
+                                    <br/>
+                                Weekly Geographical Spread and Critical Statistics</h1>
+                                </span></p>
+                                <br>
+
+                            <span style="font-size: 14px;" class="expl">
+                                    <strong>Team Members</strong>: Xumin Zhu,Jiamin Li,Jiawei Xia, Xiaohua Shi <br>
+                                    <strong>Data update: </strong>2/21/2020<br>
+                                    <strong>Data Souce: </strong><a href="https://github.com/CSSEGISandData/COVID-19.git">https://github.com/CSSEGISandData/COVID-19.git</a><br>
+                                </span>
+                                <br>
+
+                            
+                                   <span style="font-size: 14px;" class="expl">
+                                    We designed two graphs to visualize the spread of the conaravirus breakout among all provinces in China, and conducted a time series analysis by week.<br>
+
+                                    The two visualizations for our data - <br>
+                                    <ol style="font-size: 14px;">
+                                        <li>A map-based  heapmap to show how the disease spread geographically in China over time.</li>
+                                        <li>A radical stack bar chart to overview the exact number of confirmed / death / recovered cases in all provinces.</li>
+                                    </ol> 
+                                    <strong>Encoding Menthods</strong><br>
+                                    The primary purpose of the visualization is to understand how and where the infectious virus breakout and spread to, so the <u>geographical info</u> showing the trend of the disease breakout is encoded using map in this case, and the most attractive element, <u>color</u>, is used to encode the amount of <u>confirmed cases</u>, to show the severe situation of virus and its impact on each area.
+                                    <br>
+                                    We onceconsidered to use pyramids or normal ranked bar chart to show the case numbers for the right part of the data vis. However,  the radical one could have a metaphor that <u>all provinces actually connnect with each other</u> and are part of the destiny of China together. <br>
+                                    <br>
+                                    <strong>Interactivity Techniques</strong><br>
+                                       We mainly use <u>Hover</u> and <u>Button switch</u> as interactivity in our data vis, to enable exploratory while trying to eliminate unnecessary visual distractions.
+                                    
+        
+                                    <br>
+
+                                </span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+    <!-- KPI Board -->
+    <div class="row" style="padding: 20px 0px 20px 100px;" text-center id="kpis">
+        <div class="col-sm-4 column text-center">
+            <div class="tile">
+                <div class="wrapper">
+                    <div class="header">Confirmed Today</div>
+                      <div class="dates">
+                        <div class="start">
+                            <strong>Total Number</strong> 64,040
+                            <span></span>
+                        </div>
+                        <div class="ends">
+                            <strong>Growth Rate</strong> 0.05%
+                        </div>
+                      </div>                 
+
+                </div>
+            </div>
+        </div>
+    
+          
+           <div class="col-sm-4 column text-center">
+            <div class="tile">
+                <div class="wrapper">
+                    <div class="header">Deaths Today</div>
+                    <div class="dates">
+                        <div class="start">
+                            <strong>Total Number</strong> 1,489
+                            <span></span>
+                        </div>
+                        <div class="ends">
+                            <strong>Growth Rate</strong> 7.74%
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 column text-center">
+            <div class="tile">
+                <div class="wrapper">
+                    <div class="header">Recovered Today</div>
+                    <div class="dates">
+                        <div class="start">
+                            <strong>Total Number</strong> 7,092
+                            <span></span>
+                        </div>
+                        <div class="ends">
+                            <strong>Growth Rate</strong> 1.50%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    <hr>
+
+
+    <!-- Main Vis -->
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-sm-11 column col-sm-offset-1">
+            <h3>Coronavirus Outbreak Data Visualization</h3>
+            <h5>Note: Please click the picture to view interactive notebooks and the D3.js source code</h5>
+        </div>
+
+        <div class="col-sm-12 row text-center" id="update">
+
+            <div class="col-sm-6" id="map_vis1" style="height: 500px">
+                <h3>Coronavirus Distribution Map</h3>
+                <a href="https://observablehq.com/@karviex/corona-virus-2019-distribution-in-china/2">
+                <img src="mapchart.png" style="width:500px;height:400px"></img></a>
+            </div>
+            <div class="col-sm-6" id="map_vis2" style="height: 500px">
+                <h3>The Weekly Increase of Confirmed Cases in Provinces Outside Hubei</h3>
+                 <a href="https://observablehq.com/@miaxmzhu/radial-stacked-bar-chart">
+                <img src="bar.png" style="width:450px;height:400px"></img></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <!-- <div class="clr"></div> -->
+    <div class="col-sm-12" id="mainwrapper" height>
+
+        <div class="clr"></div>
+        <div class="genericholder">
+            <div id="charts"></div>
+            <script id="grid" type="text/plain">
+            </script>
+        </div>
+
+
+    </div>
+    <hr>
+
+    <!-- Develop process -->
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-sm-11 column col-sm-offset-1">
+            <h3>Our Development Process and Discovered Insights</h3>
+        </div>
+        <div class="col-sm-5 column col-sm-offset-1">
+            <p> <span style="font-size: 14px;" class="insights">
+                   <p style="font-size: 14px"><strong>Develop Process</strong> </p>
+                   <p style="font-size: 14px;">We started from choosing a data anlaysis and vis topic based on a recent hot topic. We followed the process of: <br>
+                   <ul style="font-size: 14px;">
+                       <li>Found suitable datasets and cleaned the proper dataset. </li>
+                       <li>Played with the dataset - conducting basic exploratory analysis.</li> 
+                       <li>Agreed on the most important story to show through our vis - how the disease was spread and how it impacted each area.</li>
+                       <li>Designed the vis (initial sketching) and iterated the design according to peer feedback. </li>
+                       <li>Decided the encoding channels: <u>Color</u> to show the impact by representing the scale of case numbers; <u>Geographical location</u> to show its spread route.</li>
+                       <li>Coded out the design and adjusted code chunks after combining each sections. </li>
+                    
+                       <br></ul>
+                <p style="font-size: 14px;"><strong>Some Difficult Time</strong></p>
+                <ul style="font-size: 14px;">
+                       <li><strong>Visualization decision:</strong> We argued on what kind of charts could better represent our story. Some map vis could show piecharts or barcharts to represent more data, we've spent time on simplifying our visualization, making it clear and self-expressive without requiring much user thinking. Among 5-6 options we used two seperate but complementary charts visualizing the geographical spread and numbercal increase of the disease. </li>
+                       <li><strong>D3.js coding:</strong> We've spent a very long time translating design into code, espceially the button switch part that listens to the hover interaction and update the whole vis. We were very desperate when we spent over 10h without figuring out how to realize it.</li>
+                       <li><strong>Coding cooperation:</strong> It's been very difficult to split the work/coding, and we found it really hard to sync up and combine.</li>
+                       
+                   </ul>
+
+
+                </span>
+            </p>
+
+        </div>
+        <div class="col-sm-5 column">
+
+            <p><span style="font-size: 14px;" class="insights">
+                   <p style="font-size: 14px"><strong>Team Work Assignment</strong> </p>
+                   <p style="font-size: 13px;">We splited our work by every part of the vis. On average, each member spent <strong>10h</strong> to investigate corresponding techniques.</p> <br>
+                   <ul style="font-size: 14px;">
+                       <li><strong>Vis Proposal:</strong> All Teammates</li>
+                       <li><strong>Data Prep:</strong> Jiawei Xia, Xiaohua Shi</li>
+                       <li><strong>Map Vis:</strong> Jiamin Li</li>
+                       <li><strong>Map Button Control:</strong> Jiawei Xia</li>
+                       <li><strong>Radical Bar:</strong> Xumin Zhu</li>
+                       <li><strong>Web Dev/Documentation</strong> Xumin Zhu, Jiawei Xia</li>
+                   </ul>
+                   <br>
+                   <p style="font-size: 14px"><strong>Some Data Insights</strong> </p>
+                   <ul style="font-size: 14px;">
+                       <li><strong>Outbreak spread:</strong> The coronavirus mainly spread from Wuhan to its adjacent provinces as well as closely connected provinces. For example, Guangdong has a large amount of high-speed railways connected with Wuhan.</li>
+                       <li><strong>Death rate:</strong> Although the confirmed cases seems terrifying, the death rate of coronavirus remained as low as 2%.</li>
+                       <li><strong>Government control:</strong> Over 1 month, the scope of coronavirus outbreak was controlled within the southeastern China, suggesting that the government took immediate actions to control the disease.</li>
+                       <li><strong>Population factors:</strong> Although the southwestern China seems to have less cases, it may not suggest a better prevention as there were less population.</li>
+
+                   </ul>
+
+
+                </span>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+<footer style="padding: 20px 0px;">
+    <hr>
+    <div class="row">
+        <div class="col-md-12 column text-center">
+            <span class="attribution">Created by Xumin Zhu,Jiamin Li,Jiawei Xia, Xiaohua Shi | For Our Loved Mother China </span>
+        </div>
+    </div>
+</footer>
+
+</html>
