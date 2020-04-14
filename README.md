@@ -9,9 +9,9 @@ The write-up website that concludes the assignment process.
 
 Note: the url to ObservableHQ notebook is linked to the two charts in this file.
 
-	* [Chart1: China Map](https://observablehq.com/@karviex/coronavirus-2019-distribution-in-china/2)
+* [Chart1: China Map](https://observablehq.com/@karviex/coronavirus-2019-distribution-in-china/2)
 
-	* [Chart2: Radial chart](https://observablehq.com/@miaxmzhu/radial-stacked-bar-chart)
+* [Chart2: Radial chart](https://observablehq.com/@miaxmzhu/radial-stacked-bar-chart)
 
 2. **radar.html and line.js**: The alternative interactive visualization for Chart2.
 
